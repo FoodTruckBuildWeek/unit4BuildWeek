@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require("../secrets/index"); // use this secret!
 
-function buildToken (user) {
+function buildTokenDiner (diner) {
     const payload = {
-        subject: user.user_id,
-        username: user.username,
-        email: user.email,
-        role_name: user.role_name,
+        subject: diner.user_id,
+        username: diner.username,
+        email: diner.email,
+        role: diner.role,
     }
     const config = {
         expiresIn: '1d',
@@ -17,5 +17,5 @@ function buildToken (user) {
 }
 
 module.exports = {
-    buildToken
+    buildTokenDiner
 };
