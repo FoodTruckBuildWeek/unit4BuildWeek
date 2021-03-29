@@ -2,7 +2,7 @@ require('dotenv').config()
 /*
   PORT=5000
   NODE_ENV=development
-  DEV_DATABASE_URL='postgresql://postgres:password@localhost:5432/database_name'
+  // DEV_DATABASE_URL='postgresql://postgres:password@localhost:5432/database_name'
   TESTING_DATABASE_URL='postgresql://postgres:password@localhost:5432/testing_database_name'
   Put the above in your .env file. Some adjustments in the connection URLs will be needed:
     - 5432 (this is the default TCP port for PostgreSQL, should work as is and can be omitted)
@@ -26,7 +26,8 @@ const sharedConfig = {
 module.exports = {
   development: {
     ...sharedConfig,
-    connection: process.env.DEV_DATABASE_URL,
+    connection: 'postgresql://postgres:password@localhost:5432/foodtruck',
+    // connection: process.env.DEV_DATABASE_URL,
   },
   testing: {
     ...sharedConfig,
