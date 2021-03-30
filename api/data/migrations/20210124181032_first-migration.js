@@ -21,7 +21,7 @@ exports.up = async (knex) => {
       tbl.string('longitude')
       tbl.string('laditude')
       tbl
-        .integer("fav_truck_id")
+        .integer("diner_favetruck_id")
         .unsigned()
         .notNullable()
         .references("truck_id")
