@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const Users = require("./users-model");
-// const { restricted, only } = require("../auth/auth-middleware");
 
-router.get("/:user_id", (req, res, next) => { // done for you
+router.get("/:user_id", (req, res, next) => { 
     Users.findById(req.params.user_id)
       .then(user => {
         res.json(user);
@@ -10,7 +9,7 @@ router.get("/:user_id", (req, res, next) => { // done for you
       .catch(next);
   });
 
-  router.get("/", (req, res, next) => { // done for you
+  router.get("/", (req, res, next) => { 
     Users.find()
       .then(user => {
         res.json(user);
