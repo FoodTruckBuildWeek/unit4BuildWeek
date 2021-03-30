@@ -15,17 +15,18 @@ const sharedConfig = {
 module.exports = {
   development: {
     ...sharedConfig,
-    connection: 'postgresql://postgres:postgres@localhost:5432/foodtruck',
+    connection: {
+      host: 'localhost',
+      port: 5432,
+      user: 'postgres',
+      password: 'postgres',
+      database: 'foodtruck'
+    },
+    pool: { min: 2, max: 10 },
+    // connection: 'postgresql://postgres:postgres@localhost:5432/foodtruck',
     // connection: process.env.DEV_DATABASE_URL,
     useNullAsDefault: true,
-    // pool: {
-    //   afterCreate: (conn, done) => {
-    //     conn.run('PRAGMA foreign_keys = ON', done)
-    //   }
-    // }
   },
-  
-
   testing: {
     ...sharedConfig,
     connection: process.env.TESTING_DATABASE_URL,
