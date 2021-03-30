@@ -1,4 +1,4 @@
-// db = require('../../data/dbConfig')
+// db = require('../../data/db-config')
 
 // //get array of trucks owned by id
 // // const findById = (truck_id) => {
@@ -37,7 +37,7 @@
 // }
 
 // module.exports = {
-//     findById, createTruck, insert,
+//     findById, insert,
 //     update,
 //     remove,
 // } 
