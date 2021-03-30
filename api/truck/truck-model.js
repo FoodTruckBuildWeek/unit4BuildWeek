@@ -14,5 +14,5 @@
 
 // module.exports = {
     //findById, add, update, delete
-//     findBy(filter) - filter: cuisine type, customer average rating, radSize, 
+//     findBy(filter) - filter: cuisine type, radSize, 
 // } 
