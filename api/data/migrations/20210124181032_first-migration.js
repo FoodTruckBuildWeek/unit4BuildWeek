@@ -8,15 +8,16 @@ exports.up = async (knex) => {
       users.string("role", 28).notNullable();
       users.timestamps(false, true);
     })
-    .createTable("trucks", (tbl) => {
-      tbl.increments("truck_id");
-      tbl.string("truck_img").notNullable();
-      tbl.string("cuisine_type", 28).notNullable();
-      tbl.time("departure_time").notNullable();
+    .createTable("trucks", (trucks) => {
+      trucks.increments("truck_id");
+      trucks.string("truck_img").notNullable();
+      trucks.string("cuisine_type", 28).notNullable();
+      trucks.time("departure_time").notNullable();
     })
     .createTable("diners", (tbl) => {
       tbl.increments("diner_id");
-      //tbl.text("diner_location"); need gps
+      tbl.string('longitude')
+      tbl.string('laditude')
       tbl
         .integer("fav_truck_id")
         .unsigned()
@@ -103,7 +104,7 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-  await knex.schema.dropTableIfExists("diner_favtruck");
+  await knex.schema.dropTableIfExists("diner_favetruck");
   await knex.schema.dropTableIfExists("ratings");
   await knex.schema.dropTableIfExists("trucks_menuitems");
   await knex.schema.dropTableIfExists("menuitems");
@@ -111,5 +112,4 @@ exports.down = async (knex) => {
   await knex.schema.dropTableIfExists("diners");
   await knex.schema.dropTableIfExists("trucks");
   await knex.schema.dropTableIfExists("users");
-  await knex.schema.dropTableIfExists("roles");
 };
