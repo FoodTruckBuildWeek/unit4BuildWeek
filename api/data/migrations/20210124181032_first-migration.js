@@ -1,30 +1,28 @@
 exports.up = async (knex) => {
   await knex.schema
+  .createTable("roles", (tbl) => {
+    tbl.increments("role_id");
+    tbl.string('role').notNullable();
+  })
     .createTable("users", (users) => {
       users.increments("user_id");
       users.string("user_username", 200).notNullable();
       users.string("user_password", 200).notNullable();
       users.string("user_email", 320).notNullable();
-      users.integer("role").notNullable();
+      users.integer("role_id").notNullable().references('role_id').inTable('roles') .onDelete("RESTRICT")
+      .onUpdate("RESTRICT");
       users.timestamps(false, true);
     })
     .createTable("trucks", (tbl) => {
       tbl.increments("truck_id");
-      tbl.binary("truck_img").notNullable();
+      tbl.string("truck_img").notNullable();
       tbl.string("cuisine_type", 28).notNullable();
       tbl.time("departure_time").notNullable();
-      // tbl
-      //   .integer("truck_location_id")
-      //   .unsigned()
-      //   .notNullable()
-      //   .references("truck_location_id")
-      //   .inTable("truck_locations")
-      //   .onDelete("RESTRICT")
-      //   .onUpdate("RESTRICT");
     })
     .createTable("truck_locations", (tbl) => {
       tbl.increments("truck_location_id");
-      //tbl.something("truck_coordinates");//gps coordinates
+      tbl.string("laditude");
+      tbl.string('longitude');
       tbl
         .integer("truck_id")
         .unsigned()
@@ -38,7 +36,6 @@ exports.up = async (knex) => {
       tbl.increments("diner_id");
       tbl.integer("role_id").notNullable();
       //tbl.text("diner_location"); need gps
-      // tbl.integer("fav_truck_id");
       tbl
         .integer("fav_truck_id")
         .unsigned()
@@ -56,7 +53,7 @@ exports.up = async (knex) => {
       tbl.increments("menuitem_id");
       tbl.string("item_name", 28).notNullable();
       tbl.text("item_description").notNullable();
-      tbl.binary("item_img").notNullable();
+      tbl.string("item_img").notNullable();
       tbl.float("item_price").notNullable();
     })
     .createTable("trucks_menuitems", (tbl) => {
@@ -165,10 +162,10 @@ exports.down = async (knex) => {
   await knex.schema.dropTableIfExists("operator_trucks")
   await knex.schema.dropTableIfExists("trucks_menuitems")
   await knex.schema.dropTableIfExists("menuitems")
-  await knex.schema.dropTableIfExists("diners")
   await knex.schema.dropTableIfExists("operators")
- 
+  await knex.schema.dropTableIfExists("diners")
   await knex.schema.dropTableIfExists("truck_locations")
   await knex.schema.dropTableIfExists("trucks")
   await knex.schema.dropTableIfExists("users")
+  await knex.schema.dropTableIfExists("roles")
 } 
