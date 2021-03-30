@@ -1,11 +1,9 @@
-// db = require('../../data/dbConfig')
+db = require("../../data/db-config");
 
-// //get menu with itemName, itemDescr, photos, price, customer rating, customerAverageRating
-// const findById = (item_id) => {
-//     return db('menu as m')
-// }
+const findById = (id) => {
+  return db("menuitems").where({ id }).first();
+};
 
-// module.exports = {
-//     findById
-// } 
-
+module.exports = {
+  findById,
+};
