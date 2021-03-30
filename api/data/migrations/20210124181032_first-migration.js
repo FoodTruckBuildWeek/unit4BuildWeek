@@ -13,6 +13,8 @@ exports.up = async (knex) => {
       trucks.string("truck_img").notNullable();
       trucks.string("cuisine_type", 28).notNullable();
       trucks.time("departure_time").notNullable();
+      trucks.string('longitude').notNullable()
+      trucks.string('laditude').notNullable()
     })
     .createTable("diners", (tbl) => {
       tbl.increments("diner_id");
