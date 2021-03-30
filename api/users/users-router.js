@@ -9,6 +9,14 @@ router.get("/:user_id", (req, res, next) => { // done for you
       })
       .catch(next);
   });
+
+  router.get("/", (req, res, next) => { // done for you
+    Users.find()
+      .then(user => {
+        res.json(user);
+      })
+      .catch(next);
+  });
   
   module.exports = router;
   

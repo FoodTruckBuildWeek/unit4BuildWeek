@@ -8,21 +8,39 @@ exports.up = async (knex) => {
       users.integer("role").notNullable();
       users.timestamps(false, true);
     })
+    .createTable("trucks", (tbl) => {
+      tbl.increments("truck_id");
+      tbl.binary("truck_img").notNullable();
+      tbl.string("cuisine_type", 28).notNullable();
+      tbl.time("departure_time").notNullable();
+      // tbl
+      //   .integer("truck_location_id")
+      //   .unsigned()
+      //   .notNullable()
+      //   .references("truck_location_id")
+      //   .inTable("truck_locations")
+      //   .onDelete("RESTRICT")
+      //   .onUpdate("RESTRICT");
+    })
+    .createTable("truck_locations", (tbl) => {
+      tbl.increments("truck_location_id");
+      //tbl.something("truck_coordinates");//gps coordinates
+      tbl
+        .integer("truck_id")
+        .unsigned()
+        .notNullable()
+        .references("truck_id")
+        .inTable("trucks")
+        .onDelete("RESTRICT")
+        .onUpdate("RESTRICT");
+    })
     .createTable("diners", (tbl) => {
       tbl.increments("diner_id");
       tbl.integer("role_id").notNullable();
       //tbl.text("diner_location"); need gps
-      tbl.integer("fav_truck_id");
+      // tbl.integer("fav_truck_id");
       tbl
-        .integer("diner_id")
-        .unsigned()
-        .notNullable()
-        .references("diner_id")
-        .inTable("diners")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
-      tbl
-        .integer("truck_id")
+        .integer("fav_truck_id")
         .unsigned()
         .notNullable()
         .references("truck_id")
@@ -33,20 +51,6 @@ exports.up = async (knex) => {
     .createTable("operators", (tbl) => {
       tbl.increments("operator_id");
       tbl.integer("role_id", 128).notNullable();
-    })
-    .createTable("trucks", (tbl) => {
-      tbl.increments("truck_id");
-      tbl.binary("truck_img").notNullable();
-      tbl.string("cuisine_type", 28).notNullable();
-      tbl.time("departure_time").notNullable();
-      tbl
-        .integer("truck_location_id")
-        .unsigned()
-        .notNullable()
-        .references("truck_location_id")
-        .inTable("truck_locations")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
     })
     .createTable("menuitems", (tbl) => {
       tbl.increments("menuitem_id");
@@ -133,25 +137,13 @@ exports.up = async (knex) => {
         .onDelete("RESTRICT")
         .onUpdate("RESTRICT");
     })
-    .createTable("truck_locations", (tbl) => {
-      tbl.increments("truck_location_id");
-      //tbl.something("truck_coordinates");//gps coordinates
-      tbl
-        .integer("truck_id")
-        .unsigned()
-        .notNullable()
-        .references("truck_id")
-        .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
-    })
     .createTable("diner_truck_locations", (tbl) => {
       tbl.increments("diner_truck_location_id");
       tbl
         .integer("truck_location_id")
         .unsigned()
         .notNullable()
-        .references("truck_location_id")
+        .references("truck_id")
         .inTable("trucks")
         .onDelete("RESTRICT")
         .onUpdate("RESTRICT");
@@ -168,14 +160,15 @@ exports.up = async (knex) => {
 
 exports.down = async (knex) => {
   await knex.schema.dropTableIfExists("diner_truck_locations")
-  await knex.schema.dropTableIfExists("truck_locations")
   await knex.schema.dropTableIfExists("diner_favtruck")
   await knex.schema.dropTableIfExists("ratings")
   await knex.schema.dropTableIfExists("operator_trucks")
   await knex.schema.dropTableIfExists("trucks_menuitems")
   await knex.schema.dropTableIfExists("menuitems")
-  await knex.schema.dropTableIfExists("trucks")
-  await knex.schema.dropTableIfExists("operators")
   await knex.schema.dropTableIfExists("diners")
-  await knex.schema.dropTableIfExists("users");
-};
+  await knex.schema.dropTableIfExists("operators")
+ 
+  await knex.schema.dropTableIfExists("truck_locations")
+  await knex.schema.dropTableIfExists("trucks")
+  await knex.schema.dropTableIfExists("users")
+} 
