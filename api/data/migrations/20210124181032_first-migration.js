@@ -14,12 +14,12 @@ exports.up = async (knex) => {
       trucks.string("cuisine_type", 28).notNullable();
       trucks.time("departure_time").notNullable();
       trucks.string('longitude').notNullable()
-      trucks.string('laditude').notNullable()
+      trucks.string('latitude').notNullable()
     })
     .createTable("diners", (tbl) => {
       tbl.increments("diner_id");
       tbl.string('longitude')
-      tbl.string('laditude')
+      tbl.string('latitude')
       tbl
         .integer("diner_favetruck_id")
         .unsigned()
