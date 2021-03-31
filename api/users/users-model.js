@@ -15,7 +15,6 @@ function findById(user_id) {
 
 async function add(user) {
   return db('users')
-  // .select("user_id", "username", "password", "role")
   .insert(user, "user_id")
   .then(u => {
     const [user_id] = u
