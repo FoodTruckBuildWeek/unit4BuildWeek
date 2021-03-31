@@ -1,8 +1,8 @@
 const db = require("../data/db-config");
-const st = db.postgis
+const st = db.postgis;
 
 function get() {
-  return db('trucks')
+  return db("trucks");
 }
 
 const findById = (truck_id) => {
@@ -57,5 +57,5 @@ module.exports = {
   insert,
   update,
   remove,
-  get
+  get,
 };
