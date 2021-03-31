@@ -1,10 +1,6 @@
 const router = require("express").Router();
 const Trucks = require("./truck-model.js");
 const Menu = require("../menu/menu-model");
-// const {
-//   validateTruckId,
-//   validateTruckPost,
-// } = require("../middleware/middleware");
 
 //get truck by id
 router.get("/:id", (req, res, next) => {
