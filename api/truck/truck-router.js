@@ -59,10 +59,12 @@ router.post("/", (req, res, next) => {
 //delete truck
 router.delete("/:id", (req, res, next) => {
   Trucks.remove(req.params.id)
-    .then((truck) => {
-      res.status(200).json(truck);
+    .then(() => {
+      res.status(200).json({message: `This is number deleted ${req.params.id}`})
     })
-    .catch(next);
+    .catch(error => {
+      next({message: error.message})
+    })
 });
 
 //edit truck
