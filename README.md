@@ -144,19 +144,6 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
-### POST - Create new truck
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
-
-```JSON
-
- {truck_img: 'arturo-rey-m6fYkq_P2Cc-unsplash.jpg', cuisine_type: 'french', departure_time: '7:00pm', laditude: '44.77777', longitude: '99.00333'},
-
-```
-</details>
-
------------------------------------------------------------------------------------------
-
 ### DELETE - Delete truck
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
