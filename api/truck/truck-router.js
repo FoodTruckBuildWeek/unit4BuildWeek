@@ -1,20 +1,40 @@
 const router = require("express").Router();
 const Trucks = require("./truck-model.js");
-const Menu = require("../menu/menu-model");
+// const Menu = require("../menu/menu-model");
+
+//get all trucks
+router.get('/', (req, res) => {
+  Trucks.get()
+  .then((trucks) => {
+    res.status(200).json(trucks);
+  })
+  .catch((err) => {
+    res.status(500).json({message: err})
+  })
+})
 
 //get truck by id
-router.get("/:id", (req, res, next) => {
-  Trucks.findById(req.params.truck_id)
-    .then((truck) => {
-      Menu.findByTruckId(truck_id)
-        .then((menu) => {
-          truck.menu = menu;
-          res.json(truck);
-        })
-        .catch(next);
-    })
-    .catch(next);
-});
+router.get('/:id', (req, res, next) => {
+  Trucks.findById(req.params.id)
+      .then(trucks => {
+          res.status(200).json(trucks)
+      })
+      .catch(next)
+})
+
+
+// router.get("/:id", (req, res, next) => {
+//   Trucks.findById(req.params.truck_id)
+//     .then((truck) => {
+//       Menu.findByTruckId(truck_id)
+//         .then((menu) => {
+//           truck.menu = menu;
+//           res.json(truck);
+//         })
+//         .catch(next);
+//     })
+//     .catch(next);
+// });
 
 //get truck by location
 router.get("/location", (req, res, next) => {
