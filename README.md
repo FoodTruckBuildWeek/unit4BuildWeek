@@ -210,6 +210,21 @@ Status: 200 Ok
 
 -----------------------------------------------------------------------------------------
 
+### GET - Get operator by id
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/operators/{operator_id}</summary>
+
+```JSON
+what you get back:
+{
+    "operator_id": 2,
+    "truck_id": 3
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get Menu Item by id 
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
