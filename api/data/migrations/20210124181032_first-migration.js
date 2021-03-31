@@ -13,13 +13,13 @@ exports.up = async (knex) => {
       trucks.string("truck_img").notNullable();
       trucks.string("cuisine_type", 28).notNullable();
       trucks.time("departure_time").notNullable();
-      trucks.string('longitude').notNullable()
-      trucks.string('latitude').notNullable()
+      trucks.string("longitude").notNullable();
+      trucks.string("latitude").notNullable();
     })
     .createTable("diners", (tbl) => {
       tbl.increments("diner_id");
-      tbl.string('longitude')
-      tbl.string('latitude')
+      tbl.string("longitude");
+      tbl.string("latitude");
       tbl
         .integer("diner_favetruck_id")
         .unsigned()
@@ -100,8 +100,8 @@ exports.up = async (knex) => {
         .notNullable()
         .references("truck_id")
         .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     });
 };
 
