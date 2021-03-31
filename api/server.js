@@ -10,6 +10,7 @@ const usersRouter = require('./users/users-router.js')
 const dinerRouter = require('./diners/diner-router.js')
 const operatorRouter = require('./operators/operator-router.js')
 const truckRouter = require('./truck/truck-router.js')
+const menuRouter = require('./menu/menu-router.js')
 
 const server = express()
 
@@ -22,6 +23,7 @@ server.use('/api/users', usersRouter)
 server.use('/api/diners', dinerRouter)
 server.use('/api/operators', operatorRouter)
 server.use('/api/trucks', truckRouter)
+server.use('/api/menu', menuRouter)
 
 server.use((err, req, res, next) => {
     res.status(500).json({
