@@ -225,7 +225,34 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
-### GET - Get Menu Item by id 
+
+
+
+
+
+
+
+
+
+
+
+### GET - Get array of trucks attached to operator id
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
+
+```JSON
+
+    {item_name: 'tacos', item_description: '3 soft shell tacos', item_img: 'krisztian-tabori-ZQf4jzkpz1k-unsplash.jpg', item_price: '8.99'},
+    
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+### GET - Get menu from truck id
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
 
@@ -250,19 +277,5 @@ HttpStatus OK
 
 -----------------------------------------------------------------------------------------
 
-### POST - Create rating
 
-number one through five
-
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
-
-```JSON
-
- {rating: 5, truck_id: 3, menuitem_id: 1}
-
-```
-</details>
-
------------------------------------------------------------------------------------------
 
