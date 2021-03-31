@@ -11,5 +11,12 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
+router.get("/:id/trucks", (req, res, next) => {
+  Operator.findOwnedTrucks(req.params.id)
+    .then((operators) => {
+      res.status(200).json(operators);
+    })
+    .catch(next);
+});
 
 module.exports = router;

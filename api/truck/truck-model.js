@@ -34,7 +34,10 @@ function update(id, changes) {
 }
 
 function remove(id) {
-  return db("trucks").where({ truck_id: id }).del();
+  return (
+    db("diner_favetruck").where({ truck_id: id }).del &&
+    db("trucks").where({ truck_id: id }).del()
+  );
 }
 
 function findWithinRadSize(lat, lng, radSize) {
