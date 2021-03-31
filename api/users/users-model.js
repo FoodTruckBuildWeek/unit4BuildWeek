@@ -1,6 +1,10 @@
-//something wrong with knex file?
-
 const db = require("../data/db-config");
+
+function findBy(filter) {
+  return db("users")
+  .select("user_id", "password", "username")
+  .where(filter)
+}
 
 function findById(user_id) {
   return db("users")
@@ -9,16 +13,18 @@ function findById(user_id) {
     .first();
 }
 
-async function add({ username, password, role }) {
-  const [user_id] = await db("users").insert({
-    username,
-    password,
-    role,
-  });
-  return user_id;
+async function add(user) {
+  return db('users')
+  // .select("user_id", "username", "password", "role")
+  .insert(user, "user_id")
+  .then(u => {
+    const [user_id] = u
+    return findById(user_id)
+  })
 }
 
 module.exports = {
   add,
   findById,
+  findBy
 };
