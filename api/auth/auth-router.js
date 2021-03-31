@@ -3,6 +3,10 @@ const bcryptjs = require("bcryptjs");
 const router = express.Router();
 const { buildToken } = require('./buildToken.js');
 const Users = require('../users/users-model');
+const { JWT_SECRET } = require('../secrets/index.js');
+const jwt = require('jsonwebtoken');
+const session = require('express-session');
+const knexSessionStore = require('connect-session-knex')(session)
 
 router.post("/register", (req, res) => {
     const credentials = req.body
@@ -45,5 +49,42 @@ router.post("/login", (req, res) => {
       })
     }
 });
+
+router.delete('/logout', (req, res) => {
+  if (req.session) {
+    console.log(req.session)
+
+    req.session.destroy(err => {
+      if (err) {
+        res
+          .status(400)
+          .send('queue the groundhog day trope... you can never leave...')
+      } else {
+        res.send('you made it out! good job!')
+      }
+    })
+  } else {
+    res.end()
+  }
+})
+
+// router.delete('/logout', (req, res, next) => {
+//   const token = req.headers.authorization
+//   jwt.verify(token, JWT_SECRET, (err, decoded) => {
+//     if(err){
+//       res.status(401).json({message: 'Token invalid'})
+//     } else {
+//       req.decodedJwt = decoded
+//       next()
+//     }
+//   })
+//   console.log(req.decodedJwt)
+//   if(req.decodedJwt) {
+//     jwt.destroy(token)
+//     res.status(200).json({message: 'you are logged out'})
+//   } else {
+//     res.end()
+//   }
+// })
 
 module.exports = router;
