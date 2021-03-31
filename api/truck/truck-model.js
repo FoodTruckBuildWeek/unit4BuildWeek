@@ -1,8 +1,8 @@
 const db = require("../data/db-config");
-const st = db.postgis
+const st = db.postgis;
 
 function get() {
-  return db('trucks')
+  return db("trucks");
 }
 
 const findById = (truck_id) => {
@@ -34,7 +34,10 @@ function update(id, changes) {
 }
 
 function remove(id) {
-  return db("trucks").where({ truck_id: id }).del();
+  return (
+    db("diner_favetruck").where({ truck_id: id }).del &&
+    db("trucks").where({ truck_id: id }).del()
+  );
 }
 
 function findWithinRadSize(lat, lng, radSize) {
@@ -54,5 +57,5 @@ module.exports = {
   insert,
   update,
   remove,
-  get
+  get,
 };
