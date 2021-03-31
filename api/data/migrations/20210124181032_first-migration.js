@@ -23,7 +23,6 @@ exports.up = async (knex) => {
       tbl
         .integer("diner_favetruck_id")
         .unsigned()
-        .notNullable()
         .references("truck_id")
         .inTable("trucks")
         .onDelete("RESTRICT")
@@ -34,7 +33,6 @@ exports.up = async (knex) => {
       tbl
         .integer("truck_id")
         .unsigned()
-        .notNullable()
         .references("truck_id")
         .inTable("trucks")
         .onDelete("RESTRICT")
