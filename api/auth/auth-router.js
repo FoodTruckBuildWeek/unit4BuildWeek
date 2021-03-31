@@ -8,8 +8,8 @@ router.post("/register", (req, res) => {
     const credentials = req.body
     if(credentials){
       const rounds = process.env.BCRYPT_ROUNDS || 8;
-      const hash = bcryptjs.hashSync(credentials.user_password, rounds);
-      credentials.user_password = hash;
+      const hash = bcryptjs.hashSync(credentials.password, rounds);
+      credentials.password = hash;
   
       Users.add(credentials)
         .then(user => {
@@ -24,14 +24,14 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { user_username, user_password } = req.body;
+    const { username, password } = req.body;
   
     if(req.body){
-      Users.findBy({user_username: user_username})
+      Users.findBy({username: username})
         .then(([user]) => {
-          if(user && bcryptjs.compareSync(user_password, user.user_password)){
+          if(user && bcryptjs.compareSync(password, user.password)){
             const token = buildToken(user)
-            res.status(200).json({message: `${user_username} is back!`, token});
+            res.status(200).json({message: `${username} is back!`, token});
           } else {
             res.status(401).json( )
           }
