@@ -68,23 +68,4 @@ router.delete('/logout', (req, res) => {
   }
 })
 
-// router.delete('/logout', (req, res, next) => {
-//   const token = req.headers.authorization
-//   jwt.verify(token, JWT_SECRET, (err, decoded) => {
-//     if(err){
-//       res.status(401).json({message: 'Token invalid'})
-//     } else {
-//       req.decodedJwt = decoded
-//       next()
-//     }
-//   })
-//   console.log(req.decodedJwt)
-//   if(req.decodedJwt) {
-//     jwt.destroy(token)
-//     res.status(200).json({message: 'you are logged out'})
-//   } else {
-//     res.end()
-//   }
-// })
-
 module.exports = router;

@@ -7,7 +7,7 @@ const knexSessionStore = require('connect-session-knex')(session)
 
 const authRouter = require('./auth/auth-router.js')
 const usersRouter = require('./users/users-router.js')
-// const dinerRouter = require('./diners/diner-router.js')
+const dinerRouter = require('./diners/diner-router.js')
 // const operatorRouter = require('./operators/operator-router.js')
 // const truckRouter = require('./truck/truck-router.js')
 
@@ -19,7 +19,7 @@ server.use(cors())
 
 server.use('/api/auth', authRouter)
 server.use('/api/users', usersRouter)
-// server.use('/api/diners', dinerRouter)
+server.use('/api/diners', dinerRouter)
 // server.use('/api/operators', operatorRouter)
 // server.use('/api/trucks', truckRouter)
 
