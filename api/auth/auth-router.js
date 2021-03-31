@@ -28,14 +28,14 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role } = req.body;
   
     if(req.body){
       Users.findBy({username: username})
         .then(([user]) => {
-          if(user && bcryptjs.compareSync(password, user.password)){
+          if(user && bcryptjs.compareSync(password, user.password, role, user.role)){
             const token = buildToken(user)
-            res.status(200).json({message: `${username} is back!`, token});
+            res.status(200).json({message: `${username} is back!`, token, role});
           } else {
             res.status(401).json( )
           }
@@ -67,5 +67,6 @@ router.delete('/logout', (req, res) => {
     res.end()
   }
 })
+
 
 module.exports = router;

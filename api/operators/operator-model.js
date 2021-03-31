@@ -13,4 +13,3 @@ const findOwnedTrucks = (operator_id) => {
 module.exports = {
   findById,
   findOwnedTrucks,
-};
