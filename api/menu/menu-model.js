@@ -1,9 +1,9 @@
-// db = require("../../data/db-config");
+db = require("../../data/db-config");
 
-// const findById = (id) => {
-//   return db("menuitems").where({ id }).first();
-// };
+const findById = (id) => {
+  return db("menuitems").where({ id }).first();
+};
 
-// module.exports = {
-//   findById,
-// };
+module.exports = {
+  findById,
+};
