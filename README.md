@@ -102,6 +102,63 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### GET - Get ALL trucks
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks</summary>
+
+```JSON
+what you get back:
+[
+    {
+        "truck_id": 1,
+        "truck_img": "arturo-rey-m6fYkq_P2Cc-unsplash.jpg",
+        "cuisine_type": "french",
+        "departure_time": "19:00:00",
+        "longitude": "99.00333",
+        "latitude": "44.77777"
+    },
+    {
+        "truck_id": 2,
+        "truck_img": "s-o-c-i-a-l-c-u-t--eeAvufLf9A-unsplash.jpg",
+        "cuisine_type": "vietnamese",
+        "departure_time": "17:00:00",
+        "longitude": "91.00998",
+        "latitude": "14.75577"
+    },
+    {
+        "truck_id": 3,
+        "truck_img": "harry-gillen-b2gdRynjL9Q-unsplash.jpg",
+        "cuisine_type": "mexican",
+        "departure_time": "21:00:00",
+        "longitude": "90.00322",
+        "latitude": "77.76654"
+    }
+]
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+### GET - Get truck by id
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks/{truck_id}</summary>
+
+```JSON
+what you get back:
+{
+    "truck_id": 1,
+    "truck_img": "arturo-rey-m6fYkq_P2Cc-unsplash.jpg",
+    "cuisine_type": "french",
+    "departure_time": "19:00:00",
+    "longitude": "99.00333",
+    "latitude": "44.77777"
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
+
 ### POST - Create new truck
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/trucks</summary>
@@ -131,6 +188,28 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### PUT - Update Truck
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks/{truck_id}</summary>
+
+```JSON
+What you need: 
+{
+    "truck_id": 2, 
+    "truck_img": "eugene-chystiakov-nlHdn7AhJHY-unsplash.jpg",
+    "cuisine_type": "eithopian",
+    "departure_time": "11:11pm",
+    "longitude": "15.12121",
+    "latitude": "13.13443"
+}
+
+What you get is:
+Status: 200 Ok
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get Menu Item by id 
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
@@ -145,18 +224,6 @@ what you get back:
 -----------------------------------------------------------------------------------------
 
 ### DELETE - Delete truck
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
-
-```JSON
-HttpStatus OK
-```
-</details>
-
-
------------------------------------------------------------------------------------------
-
-### PUT - Edit a truck
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
 
