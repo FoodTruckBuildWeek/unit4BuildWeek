@@ -36,15 +36,16 @@ what you get back:
 what you need:
 role can be operator or diner
 {
-    "username": "paula",
+    "username": "luke",
     "password": "1234",
     "role": "operator"
 }
 
 what you get back:
 {
-    "message": "Joe is back!",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6IkpvZSIsImlhdCI6MTYxNzIwMDYxMSwiZXhwIjoxNjE3Mjg3MDExfQ.5FpUhxzDRrpl73-4zWpOJSmv2W7vtwrwilAFQ__wdIc"
+    "message": "luke is back!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6Imx1a2UiLCJpYXQiOjE2MTcyMjU3OTcsImV4cCI6MTYxNzMxMjE5N30.q8woGClRqHNN1tTHwd48FhHalKHdHW-z5dMSzHqbLL4",
+    "role": "operator"
 }
 ```
 </details>
