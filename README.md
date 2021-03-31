@@ -131,6 +131,28 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### PUT - Update Truck
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks/{truck_id}</summary>
+
+```JSON
+What you need: 
+{
+    "truck_id": 2, 
+    "truck_img": "eugene-chystiakov-nlHdn7AhJHY-unsplash.jpg",
+    "cuisine_type": "eithopian",
+    "departure_time": "11:11pm",
+    "longitude": "15.12121",
+    "latitude": "13.13443"
+}
+
+What you get is:
+Status: 200 Ok
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get Menu Item by id 
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
@@ -145,18 +167,6 @@ what you get back:
 -----------------------------------------------------------------------------------------
 
 ### DELETE - Delete truck
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
-
-```JSON
-HttpStatus OK
-```
-</details>
-
-
------------------------------------------------------------------------------------------
-
-### PUT - Edit a truck
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
 
