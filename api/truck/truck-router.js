@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const Trucks = require("./truck-model.js");
 const Menu = require("../menu/menu-model");
-const {
-  validateTruckId,
-  validateTruckPost,
-} = require("../middleware/middleware");
+// const {
+//   validateTruckId,
+//   validateTruckPost,
+// } = require("../middleware/middleware");
 
 //get truck by id
 router.get("/:id", (req, res, next) => {
@@ -41,7 +41,7 @@ router.post("/", (req, res, next) => {
 });
 
 //delete truck
-router.delete("/:id", validateTruckId, (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
   Trucks.remove(req.params.id)
     .then((truck) => {
       res.status(200).json(truck);
@@ -50,7 +50,7 @@ router.delete("/:id", validateTruckId, (req, res, next) => {
 });
 
 //edit truck
-router.put("/:id", validateTruckId, (req, res, next) => {
+router.put("/:id", (req, res, next) => {
   Trucks.update(req.params.id, req.body)
     .then((truck) => {
       res.status(200).json(truck);
