@@ -8,10 +8,11 @@ function findById(diner_id) {
 const findFavoriteTrucks = (diner_id) => {
   //    need to track down fav trucks according to diner_id
   //    go from diners to fav_trucks to trucks; need a join for diners, trucks, and fav_trucks
-  return db("diners as d")
-    .join("fav_trucks as f", "f.diner_id", "=", "f.id")
-    .join("trucks as t", "t.truck_id", "=", "f.truck_id")
-    // .where(("d.diner_id" = diner_id));//Probably wrong!
+
+  return db("trucks as t")
+    .join("fav_trucks as f", "f.truck_id", "=", "t.truck_id")
+    .join("diners as d", "d.diner_id", "=", "f.diner_id")
+    .where("d.diner_id", diner_id);
 
   // select.*
   // diners d
