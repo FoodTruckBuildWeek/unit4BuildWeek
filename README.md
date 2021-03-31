@@ -34,9 +34,11 @@ what you get back:
 
 ```JSON
 what you need:
+role can be operator or diner
 {
-    "username": "Joe",
-    "password": "1234"
+    "username": "paula",
+    "password": "1234",
+    "role": "operator"
 }
 
 what you get back:
