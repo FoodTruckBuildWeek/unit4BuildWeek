@@ -2,6 +2,7 @@ const express = require('express')
 const Diner = require('./diner-model')
 const router = require('express').Router()
 
+
 //get location
 router.get('/:id', (req, res, next) => {
     Diner.findById(req.params.id)

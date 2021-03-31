@@ -20,7 +20,7 @@ server.use('/api/diners', dinerRouter)
 server.use('/api/operators', operatorRouter)
 server.use('/api/trucks', truckRouter)
 
-server.use((err, req, res, next) => { // eslint-disable-line
+server.use((err, req, res, next) => {
     res.status(500).json({
       message: err.message,
       stack: err.stack,
