@@ -102,6 +102,35 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### POST - Create new truck
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks</summary>
+
+```JSON
+what you need: 
+{
+    "truck_img": "eugene-chystiakov-nlHdn7AhJHY-unsplash.jpg",
+    "cuisine_type": "american",
+    "departure_time": "11:00pm",
+    "longitude": "12.12121",
+    "latitude": "13.13133"
+}
+
+what you get back: 
+
+{
+    "truck_id": 4,
+    "truck_img": "eugene-chystiakov-nlHdn7AhJHY-unsplash.jpg",
+    "cuisine_type": "american",
+    "departure_time": "23:00:00",
+    "longitude": "12.12121",
+    "latitude": "13.13133"
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get Menu Item by id 
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
