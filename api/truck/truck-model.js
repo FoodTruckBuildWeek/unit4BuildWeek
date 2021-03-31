@@ -1,53 +1,53 @@
-// const db = require("../data/db-config");
-// const st = db.postgis
+const db = require("../data/db-config");
+const st = db.postgis
 
-// const findById = (truck_id) => {
-//   return db("trucks").where({ truck_id }).first();
-// };
+const findById = (truck_id) => {
+  return db("trucks").where({ truck_id }).first();
+};
 
-// function findBy(filter) {
-//   return db("trucks").where(filter);
+function findBy(filter) {
+  return db("trucks").where(filter);
+}
+// //create new truck two examples
+// const createTruck = (newTruck) => {
+//     return db('trucks').insert(newTruck)
 // }
-// // //create new truck two examples
-// // const createTruck = (newTruck) => {
-// //     return db('trucks').insert(newTruck)
-// // }
-// // //create new truck
-// // function insert(truck) {
-// //   return db('trucks')
-// //     .insert(truck, 'id')
-// //     .then(([id]) => get(id));
-// // }
-
-// async function insert(truck) {
-//   const [id] = await db("trucks").insert(truck, "truck_id");
-
-//   return findById(id);
+// //create new truck
+// function insert(truck) {
+//   return db('trucks')
+//     .insert(truck, 'id')
+//     .then(([id]) => get(id));
 // }
 
-// function update(id, changes) {
-//   return db("trucks").where({ truck_id: id }).update(changes);
-// }
+async function insert(truck) {
+  const [id] = await db("trucks").insert(truck, "truck_id");
 
-// function remove(truck_id) {
-//   return db("trucks").where({ truck_id }).del();
-// }
+  return findById(id);
+}
 
-// function findWithinRadSize(lat, lng, radSize) {
-//   return db("trucks").where(
-//     st.dwithin(
-//       st.geography(st.makePoint("latitude", "longitude")),
-//       st.geography(st.makePoint(lat, lng)),
-//       radSize
-//     )
-//   );
-// }
+function update(id, changes) {
+  return db("trucks").where({ truck_id: id }).update(changes);
+}
 
-// module.exports = {
-//   findById,
-//   findBy,
-//   findWithinRadSize,
-//   insert,
-//   update,
-//   remove,
-// };
+function remove(truck_id) {
+  return db("trucks").where({ truck_id }).del();
+}
+
+function findWithinRadSize(lat, lng, radSize) {
+  return db("trucks").where(
+    st.dwithin(
+      st.geography(st.makePoint("latitude", "longitude")),
+      st.geography(st.makePoint(lat, lng)),
+      radSize
+    )
+  );
+}
+
+module.exports = {
+  findById,
+  findBy,
+  findWithinRadSize,
+  insert,
+  update,
+  remove,
+};

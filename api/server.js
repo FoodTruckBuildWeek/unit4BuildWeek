@@ -9,7 +9,7 @@ const authRouter = require('./auth/auth-router.js')
 const usersRouter = require('./users/users-router.js')
 const dinerRouter = require('./diners/diner-router.js')
 // const operatorRouter = require('./operators/operator-router.js')
-// const truckRouter = require('./truck/truck-router.js')
+const truckRouter = require('./truck/truck-router.js')
 
 const server = express()
 
@@ -21,7 +21,7 @@ server.use('/api/auth', authRouter)
 server.use('/api/users', usersRouter)
 server.use('/api/diners', dinerRouter)
 // server.use('/api/operators', operatorRouter)
-// server.use('/api/trucks', truckRouter)
+server.use('/api/trucks', truckRouter)
 
 server.use((err, req, res, next) => {
     res.status(500).json({
