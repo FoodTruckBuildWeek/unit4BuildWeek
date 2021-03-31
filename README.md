@@ -6,10 +6,23 @@ create a user with role type of diner or operator
 <summary>https://foodtruckbuildweek.herokuapp.com/api/auth/register</summary>
 
 ```JSON
-[
-    {username: 'minnie mouse', password: '1234', email: 'm@gmail.com', role: 'diner'}, 
-    {username: 'mickey mouse', password: '1234', email: 'mm@gmail.com', role: 'operator'}
-]
+what you need:
+{
+    "username": "Joe",
+    "password": "1234",
+    "email": "c@gmail.com",
+    "role": "operator"
+}
+
+what you get back:
+{
+    "data": {
+        "user_id": 1,
+        "username": "Joe",
+        "password": "$2a$08$0oUfmvlujUay2NBGG8CWJOhqhpB8gZRk/UmVa9X8NEZhUKDVIxt5S",
+        "role": "operator"
+    }
+}
 ```
 </details>
 
@@ -20,10 +33,17 @@ create a user with role type of diner or operator
 <summary>https://foodtruckbuildweek.herokuapp.com/api/auth/login</summary>
 
 ```JSON
-[
-    {username: 'minnie mouse', password: '1234'}, 
-    {username: 'mickey mouse', password: '1234'}
-]
+what you need:
+{
+    "username": "Joe",
+    "password": "1234"
+}
+
+what you get back:
+{
+    "message": "Joe is back!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6IkpvZSIsImlhdCI6MTYxNzIwMDYxMSwiZXhwIjoxNjE3Mjg3MDExfQ.5FpUhxzDRrpl73-4zWpOJSmv2W7vtwrwilAFQ__wdIc"
+}
 ```
 </details>
 
@@ -34,19 +54,25 @@ create a user with role type of diner or operator
 <summary>https://foodtruckbuildweek.herokuapp.com/api/auth/logout</summary>
 
 ```JSON
-HttpStatus OK
+Status: 200 OK
 ```
 </details>
 
 -----------------------------------------------------------------------------------------
 
-### GET - Get Diner by location
+### GET - Get Diner by id
 <details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/diners</summary>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/diners/{diner_id}</summary>
 
 ```JSON
-
-    {longitude: '44.88888', laditude: '22.12121', diner_favetruck_id: 3}
+what you get back:
+{
+    "diner_id": 2,
+    "longitude": "01.44888",
+    "latitude": "90.12322",
+    "diner_favetruck_id": 2
+}
+    
     
 ```
 </details>
@@ -55,12 +81,22 @@ HttpStatus OK
 
 ### GET - Get Diner favorite truck by id
 <details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/diners/:id</summary>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/diners/{diner_id}/trucks</summary>
 
 ```JSON
-
-    {diner_favetruck_id: 1, diner_id: 1, truck_id: 1}
-    
+what you get back:
+[
+    {
+        "truck_id": 1,
+        "truck_img": "arturo-rey-m6fYkq_P2Cc-unsplash.jpg",
+        "cuisine_type": "french",
+        "departure_time": "19:00:00",
+        "longitude": "44.88888",
+        "latitude": "22.12121",
+        "diner_favetruck_id": 3,
+        "diner_id": 1
+    }
+]
 ```
 </details>
 
@@ -132,15 +168,3 @@ number one through five
 
 -----------------------------------------------------------------------------------------
 
-
-trucks = [
-    {truck_id: 1, truck_img: 'arturo-rey-m6fYkq_P2Cc-unsplash.jpg', cuisine_type: 'french', departure_time: '7:00pm', laditude: '44.77777', longitude: '99.00333'},
-]
-
-operators = [
-    {operator_id: 1, truck_id: 1}
-]
-
-trucks_menuitems = [
-    {trucks_menuitems_id: 1, truck_id: 1, menuitem_id: 3},
-]
