@@ -228,6 +228,28 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### GET - Get trucks based on operator's id
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/operators/{operator_id}/trucks</summary>
+
+```JSON
+what you get back:
+[
+    {
+        "truck_id": 1,
+        "truck_img": "arturo-rey-m6fYkq_P2Cc-unsplash.jpg",
+        "cuisine_type": "french",
+        "departure_time": "19:00:00",
+        "longitude": "99.00333",
+        "latitude": "44.77777",
+        "operator_id": 1
+    }
+]
+```
+</details>
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get ALL items on menu
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/menu</summary>
