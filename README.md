@@ -228,9 +228,56 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
+### GET - Get ALL items on menu
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/menu</summary>
 
+```JSON
+[
+    {
+        "menuitem_id": 1,
+        "item_name": "tacos",
+        "item_description": "3 soft shell tacos",
+        "item_img": "krisztian-tabori-ZQf4jzkpz1k-unsplash.jpg",
+        "item_price": 8.99
+    },
+    {
+        "menuitem_id": 2,
+        "item_name": "pho",
+        "item_description": "bowl of chicken pho",
+        "item_img": "sharon-chen-L1ZhjK-R6uc-unsplash.jpg",
+        "item_price": 7.95
+    },
+    {
+        "menuitem_id": 3,
+        "item_name": "nutella crepe",
+        "item_description": "nutella crepe with bananas and strawberries",
+        "item_img": "paolo-cifuentes-jO586SsEfEA-unsplash.jpg",
+        "item_price": 4.99
+    }
+]
+```
+</details>
 
+-----------------------------------------------------------------------------------------
 
+### GET - Get menu item by id
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/menu/{menu_id}</summary>
+
+```JSON
+what you get back:
+{
+    "menuitem_id": 2,
+    "item_name": "pho",
+    "item_description": "bowl of chicken pho",
+    "item_img": "sharon-chen-L1ZhjK-R6uc-unsplash.jpg",
+    "item_price": 7.95
+}
+```
+</details>
+
+-----------------------------------------------------------------------------------------
 
 
 
