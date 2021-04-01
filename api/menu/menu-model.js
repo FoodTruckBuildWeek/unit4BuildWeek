@@ -4,7 +4,6 @@ const findByTruckId = (truck_id) => {
   return db("menuitems").where({ truck_id}).first();
 };
 
-
 function get() {
   return db('menuitems')
 }
