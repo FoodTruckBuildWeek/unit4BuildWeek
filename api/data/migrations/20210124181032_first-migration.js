@@ -26,8 +26,8 @@ exports.up = async (knex) => {
         //removed notNullable
         .references("truck_id")
         .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     })
     .createTable("operators", (tbl) => {
       tbl.increments("operator_id");
@@ -37,8 +37,8 @@ exports.up = async (knex) => {
         //removed notNullable
         .references("truck_id")
         .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     })
     .createTable("menuitems", (tbl) => {
       tbl.increments("menuitem_id");
@@ -52,19 +52,19 @@ exports.up = async (knex) => {
       tbl
         .integer("truck_id")
         .unsigned()
-        .notNullable()
+        // .notNullable()
         .references("truck_id")
         .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
       tbl
         .integer("menuitem_id")
         .unsigned()
         .notNullable()
         .references("menuitem_id")
         .inTable("menuitems")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     })
     .createTable("ratings", (tbl) => {
       tbl.increments("rating_id");
@@ -74,15 +74,15 @@ exports.up = async (knex) => {
         .unsigned()
         .references("truck_id")
         .inTable("trucks")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
       tbl
         .integer("menuitem_id")
         .unsigned()
         .references("menuitem_id")
         .inTable("menuitems")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     })
     .createTable("diner_favetruck", (tbl) => {
       tbl.increments("diner_favetruck_id");
@@ -92,12 +92,12 @@ exports.up = async (knex) => {
         .notNullable()
         .references("diner_id")
         .inTable("diners")
-        .onDelete("RESTRICT")
-        .onUpdate("RESTRICT");
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
       tbl
         .integer("truck_id")
         .unsigned()
-        .notNullable()
+        // .notNullable()
         .references("truck_id")
         .inTable("trucks")
         .onDelete("CASCADE")

@@ -3,10 +3,10 @@ const bcryptjs = require("bcryptjs");
 const router = express.Router();
 const { buildToken } = require('./buildToken.js');
 const Users = require('../users/users-model');
-const { JWT_SECRET } = require('../secrets/index.js');
-const jwt = require('jsonwebtoken');
-const session = require('express-session');
-const knexSessionStore = require('connect-session-knex')(session)
+// const { JWT_SECRET } = require('../secrets/index.js');
+// const jwt = require('jsonwebtoken');
+// const session = require('express-session');
+// const knexSessionStore = require('connect-session-knex')(session)
 
 router.post("/register", (req, res) => {
     const credentials = req.body
@@ -33,7 +33,7 @@ router.post("/login", (req, res) => {
     if(req.body){
       Users.findBy({username: username})
         .then(([user]) => {
-          if(user && bcryptjs.compareSync(password, user.password, role, user.role)){
+          if(user && bcryptjs.compareSync(password, user.password)){
             const token = buildToken(user)
             res.status(200).json({message: `${username} is back!`, token, role});
           } else {
@@ -67,6 +67,5 @@ router.delete('/logout', (req, res) => {
     res.end()
   }
 })
-
 
 module.exports = router;

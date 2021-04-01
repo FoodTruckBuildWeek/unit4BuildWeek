@@ -12,16 +12,13 @@ const findById = (truck_id) => {
 function findBy(filter) {
   return db("trucks").where(filter);
 }
-// //create new truck two examples
-// const createTruck = (newTruck) => {
-//     return db('trucks').insert(newTruck)
-// }
-// //create new truck
-// function insert(truck) {
-//   return db('trucks')
-//     .insert(truck, 'id')
-//     .then(([id]) => get(id));
-// }
+
+const findMenuItems = (id) => {
+  return db("trucks_menuitems as t")
+  .join("menuitems as m", "m.menuitem_id", 't.menuitem_id')
+  .select("t.*", 'm.item_name', "item_description", "item_img", "item_price")
+  .where('t.menuitem_id', id)
+};
 
 async function insert(truck) {
   const [id] = await db("trucks").insert(truck, "truck_id");
@@ -34,10 +31,7 @@ function update(id, changes) {
 }
 
 function remove(id) {
-  return (
-    db("diner_favetruck").where({ truck_id: id }).del &&
-    db("trucks").where({ truck_id: id }).del()
-  );
+  return db("trucks").where("truck_id", Number(id)).del();
 }
 
 function findWithinRadSize(lat, lng, radSize) {
@@ -58,4 +52,5 @@ module.exports = {
   update,
   remove,
   get,
+  findMenuItems
 };
