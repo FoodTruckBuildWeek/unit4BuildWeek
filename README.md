@@ -213,6 +213,20 @@ Status: 200 Ok
 
 -----------------------------------------------------------------------------------------
 
+### DELETE - Delete truck
+<details>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/trucks/{truck_id}</summary>
+
+```JSON
+{
+    "message": "truck deleted"
+}
+```
+</details>
+
+
+-----------------------------------------------------------------------------------------
+
 ### GET - Get operator by id
 <details>
 <summary>https://foodtruckbuildweek.herokuapp.com/api/operators/{operator_id}</summary>
@@ -301,53 +315,25 @@ what you get back:
 
 -----------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-### GET - Get array of trucks attached to operator id
+### GET - Get menu based on truck id
 <details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
+<summary>https://foodtruckbuildweek.herokuapp.com/api/menu/{truck_id}</summary>
 
 ```JSON
 
-    {item_name: 'tacos', item_description: '3 soft shell tacos', item_img: 'krisztian-tabori-ZQf4jzkpz1k-unsplash.jpg', item_price: '8.99'},
+{
+    "menuitem_id": 2,
+    "item_name": "pho",
+    "item_description": "bowl of chicken pho",
+    "item_img": "https://unsplash.com/photos/L1ZhjK-R6uc",
+    "item_price": 7.95
+}
     
 ```
 </details>
 
 -----------------------------------------------------------------------------------------
 
-
-
-
-### GET - Get menu from truck id
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/menu/:id</summary>
-
-```JSON
-
-    {item_name: 'tacos', item_description: '3 soft shell tacos', item_img: 'krisztian-tabori-ZQf4jzkpz1k-unsplash.jpg', item_price: '8.99'},
-    
-```
-</details>
-
------------------------------------------------------------------------------------------
-
-### DELETE - Delete truck
-<details>
-<summary>https://foodtruckbuildweek.herokuapp.com/api/</summary>
-
-```JSON
-HttpStatus OK
-```
-</details>
-
-
------------------------------------------------------------------------------------------
 
 
 
